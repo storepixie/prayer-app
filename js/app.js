@@ -4,6 +4,7 @@
     if ("serviceWorker" in navigator) {
       	window.addEventListener("load", function() {
             navigator.serviceWorker.register(worker).then(function(reg) {
+                 console.log('Service Worker registered with scope: ', registration.scope);
                 reg.onupdatefound = function() {
                     var installingWorker = reg.installing;
 
