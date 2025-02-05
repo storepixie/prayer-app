@@ -32,17 +32,33 @@
                 // console.error('Error during service worker registration:', e);
             });
       	})
+
+        window.addEventListener('focus', function () {
+            navigator.serviceWorker.ready.then(function (registration) {
+              // Force the service worker to check for updates when app is reopened
+              registration.update().then(() => {
+                console.log('Checked for new service worker!');
+                // You can also check if the new service worker is different and show a prompt
+                if (registration.waiting) {
+                  // A new service worker is waiting to be activated
+                  registration.waiting.postMessage({ action: 'skipWaiting' });  // Force activation
+                }
+              });
+            });
+        });
+
+        if (navigator.serviceWorker) {
+          navigator.serviceWorker.addEventListener('message', function(event) {
+            if (event.data && event.data.action === 'newVersionAvailable') {
+              showUpdateBanner();
+            }
+          });
+        }
 	}
 
 })();
 
-if (navigator.serviceWorker) {
-  navigator.serviceWorker.addEventListener('message', function(event) {
-    if (event.data && event.data.action === 'newVersionAvailable') {
-      showUpdateBanner();
-    }
-  });
-}
+
 
 function showUpdateBanner() {
   const banner = document.getElementById('update-banner');
