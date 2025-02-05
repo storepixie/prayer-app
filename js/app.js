@@ -54,3 +54,34 @@ function showUpdateBanner() {
     window.location.reload(); // Refresh the page to load the new version
   });
 }
+
+let deferredPrompt;  // Store the event to trigger the installation later
+const installButton = document.getElementById('install-button'); // Your custom button
+
+// Listen for the beforeinstallprompt event
+window.addEventListener('beforeinstallprompt', (e) => {
+    // Prevent the default mini-infobar
+    e.preventDefault();
+    // Store the event to trigger it later
+    deferredPrompt = e;
+    
+    // Show your custom install button
+    installButton.style.display = 'block';
+
+    // When the user clicks the install button, show the prompt
+    installButton.addEventListener('click', () => {
+        // Show the install prompt
+        deferredPrompt.prompt();
+
+        // Wait for the user to respond to the prompt
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('User accepted the installation');
+            } else {
+                console.log('User dismissed the installation');
+            }
+            // Clear the deferredPrompt variable since it's no longer needed
+            deferredPrompt = null;
+        });
+    });
+});

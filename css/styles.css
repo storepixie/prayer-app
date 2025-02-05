@@ -563,3 +563,21 @@ ul.menu-list li p {
   	width: 20%;
   }
 }
+
+#install-button{
+	display: block;
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #ffffff;
+    border: 0;
+    outline: 0;
+    /* box-shadow: none; */
+    color: #b93737;
+    font-size: 12px;
+    min-width: auto;
+    height: auto;
+    min-height: 25px;
+    padding: 0px 6px;
+}
