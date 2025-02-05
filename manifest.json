@@ -49,14 +49,14 @@
 	"form_factor": "mobile",
 	"screenshots": [
 		{
-		  "src": "/images/screenshot1.jpg",
+		  "src": "/images/screenshot1.png",
 		  "sizes": "600x800",
-		  "type": "image/jpeg"
+		  "type": "image/png"
 		},
 		{
-		  "src": "/images/screenshot2.jpg",
+		  "src": "/images/screenshot2.png",
 		  "sizes": "600x800",
-		  "type": "image/jpeg"
+		  "type": "image/png"
 		}
 	],
 	"author": {
