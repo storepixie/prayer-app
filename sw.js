@@ -143,3 +143,35 @@ self.addEventListener('fetch', function(event) {
     })
   );
 });
+
+self.addEventListener('install', (event) => {
+  self.skipWaiting();  // Force waiting service worker to become active
+});
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    // Notify clients about the new version
+    self.clients.claim()  // Claims control of all clients immediately
+  );
+});
+
+// self.addEventListener('message', function (event) {
+//   if (event.data && event.data.action === 'checkForUpdates') {
+//     // Here, you can send a message to the clients if a new version is available.
+//     event.ports[0].postMessage({ action: 'newVersionAvailable' });
+//   }
+// });
+
+self.addEventListener('updatefound', (event) => {
+  const installingWorker = event.target;
+  installingWorker.onstatechange = () => {
+    if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
+      // Send a message to notify that new content is available
+      self.clients.matchAll().then(clients => {
+        clients.forEach(client => {
+          client.postMessage({ action: "newVersionAvailable" });
+        });
+      });
+    }
+  };
+});
