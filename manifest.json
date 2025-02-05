@@ -46,7 +46,20 @@
 	   "density": "4.0"
 	  }
 	 ],
+	"form_factor": "mobile",
+	"screenshots": [
+		{
+		  "src": "/images/screenshot1.jpg",
+		  "sizes": "600x800",
+		  "type": "image/jpeg"
+		},
+		{
+		  "src": "/images/screenshot2.jpg",
+		  "sizes": "600x800",
+		  "type": "image/jpeg"
+		}
+	],
 	"author": {
-		"name": "St. Alphonsa Leicester"
+		"name": "Melvin Stanly"
 	}
 }
