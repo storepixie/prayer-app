@@ -49,12 +49,12 @@
 	"form_factor": "mobile",
 	"screenshots": [
 		{
-		  "src": "/images/screenshot1.png",
+		  "src": "./images/screenshot1.png",
 		  "sizes": "600x800",
 		  "type": "image/png"
 		},
 		{
-		  "src": "/images/screenshot2.png",
+		  "src": "./images/screenshot2.png",
 		  "sizes": "600x800",
 		  "type": "image/png"
 		}
